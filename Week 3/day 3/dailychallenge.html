@@ -1,0 +1,36 @@
+<!-- Instructions
+Daily Challenge : Show Only The Letters
+Create an input type text that takes/shows only letters. (ie. numbers and special characters won’t be accepted)
+
+Hint: use one of the following events to remove any character that is not a letter
+
+keyup event
+or keypress event
+or keydown event
+or input event
+
+Hint : Check out keycodes in Javascript or Regular Expressions -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Only Letters</title>
+</head>
+<body>
+    <input type="text" id="inputField" oninput="showOnlyLetters(event)">
+    <script>
+        function showOnlyLetters(event) {
+            const inputField = event.target;
+            const inputValue = inputField.value;
+            const filteredValue = inputValue.replace(/[^a-zA-Z]/g, ''); // Regular expression to allow only letters
+            
+            if (filteredValue !== inputValue) {
+                inputField.value = filteredValue; // Set the input field value to only letters
+            }
+        }
+    </script>
+</body>
+</html>

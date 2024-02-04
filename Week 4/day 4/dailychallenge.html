@@ -1,0 +1,70 @@
+// Instructions
+// In this exercise, you will use object oriented programming concepts to define and use a custom object in JavaScript.
+
+// Create a class named Video. The class should be constructed with the following parameters:
+// title (a string)
+// uploader (a string, the person who uploaded it)
+// time (a number, the duration of the video - in seconds)
+// Create a method called watch() which displays a string as follows:
+// “uploader parameter watched all time parameter of title parameter!”
+// Instantiate a new Video instance and call the watch() method.
+// Instantiate a second Video instance with different values.
+// Bonus: Use an array to store data for five Video instances (ie. title, uploader, time)
+// Think of the best data structure to save this information within the array.
+// Bonus: Loop through the array to instantiate those instances.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Class</title>
+</head>
+<body>
+<script>
+    // Define the Video class
+    class Video {
+        constructor(title, uploader, time) {
+            this.title = title;
+            this.uploader = uploader;
+            this.time = time;
+        }
+
+        watch() {
+            console.log(`${this.uploader} watched all ${this.time} seconds of ${this.title}!`);
+        }
+    }
+
+    // Instantiate a new Video instance and call the watch() method
+    const video1 = new Video("Introduction to JavaScript", "JohnDoe", 120);
+    video1.watch();
+
+    // Instantiate a second Video instance with different values
+    const video2 = new Video("Web Development Crash Course", "JaneSmith", 300);
+    video2.watch();
+
+    // Bonus: Use an array to store data for five Video instances
+    const videoData = [
+        { title: "CSS Basics", uploader: "David", time: 180 },
+        { title: "HTML5 Tutorial", uploader: "Emily", time: 240 },
+        { title: "JavaScript Fundamentals", uploader: "Michael", time: 360 },
+        { title: "React Crash Course", uploader: "Sarah", time: 420 },
+        { title: "Node.js Essentials", uploader: "Alex", time: 300 }
+    ];
+
+    // Bonus: Loop through the array to instantiate those instances
+    const videos = [];
+    videoData.forEach(data => {
+        const { title, uploader, time } = data;
+        const video = new Video(title, uploader, time);
+        videos.push(video);
+    });
+
+    // Optional: Call watch() method for each video in the array
+    videos.forEach(video => video.watch());
+</script>
+</body>
+</html>
+
+

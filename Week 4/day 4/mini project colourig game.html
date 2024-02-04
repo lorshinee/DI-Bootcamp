@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coloring Squares</title>
+<style>
+    /* CSS Styles */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(10, 50px);
+        grid-template-rows: repeat(10, 50px);
+        gap: 2px;
+    }
+    .color {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+        cursor: pointer;
+    }
+    .square {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <!-- Grid of colors -->
+    <div class="color" style="background-color: red;"></div>
+    <div class="color" style="background-color: blue;"></div>
+    <div class="color" style="background-color: green;"></div>
+    <!-- Add more colors as needed -->
+    <!-- Grid of blank squares -->
+    <div class="square"></div>
+    <!-- Add more squares as needed -->
+</div>
+<script>
+    // JavaScript code
+    const colors = document.querySelectorAll('.color');
+    const squares = document.querySelectorAll('.square');
+    let currentColor = '';
+
+    colors.forEach(color => {
+        color.addEventListener('click', () => {
+            currentColor = color.style.backgroundColor;
+            colors.forEach(c => c.classList.remove('selected'));
+            color.classList.add('selected');
+        });
+    });
+
+    squares.forEach(square => {
+        square.addEventListener('mousedown', () => {
+            square.style.backgroundColor = currentColor;
+            square.addEventListener('mouseover', fillSquare);
+        });
+        square.addEventListener('mouseup', () => {
+            square.removeEventListener('mouseover', fillSquare);
+        });
+    });
+
+    function fillSquare(e) {
+        e.target.style.backgroundColor = currentColor;
+    }
+</script>
+</body>
+</html>

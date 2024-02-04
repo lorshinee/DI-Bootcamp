@@ -1,0 +1,152 @@
+<!-- Exercise 1 : Dog Age To Human Years -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Age to Human Years</title>
+</head>
+<body>
+<script>
+const data = [
+  {
+    name: 'Butters',
+    age: 3,
+    type: 'dog'
+  },
+  {
+    name: 'Cuty',
+    age: 5,
+    type: 'rabbit'
+  },
+  {
+    name: 'Lizzy',
+    age: 6,
+    type: 'dog'
+  },
+  {
+    name: 'Red',
+    age: 1,
+    type: 'cat'
+  },
+  {
+    name: 'Joey',
+    age: 3,
+    type: 'dog'
+  },
+  {
+    name: 'Rex',
+    age: 10,
+    type: 'dog'
+  },
+];
+
+// Using a loop
+let sumLoop = 0;
+for (let i = 0; i < data.length; i++) {
+    if (data[i].type === 'dog') {
+        sumLoop += data[i].age * 7; // Convert dog years to human years
+    }
+}
+console.log('Sum of dogs\' ages using loop:', sumLoop);
+
+// Using the reduce() method
+const sumReduce = data.reduce((acc, curr) => {
+    if (curr.type === 'dog') {
+        return acc + (curr.age * 7); // Convert dog years to human years
+    } else {
+        return acc;
+    }
+}, 0);
+console.log('Sum of dogs\' ages using reduce():', sumReduce);
+</script>
+</body>
+</html>
+
+
+<!-- Exercise 2 : Email -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Cleanup</title>
+</head>
+<body>
+<script>
+const userEmail3 = ' cannotfillemailformcorrectly@gmail.com ';
+const cleanedEmail = userEmail3.trim();
+console.log(cleanedEmail); // Output: "cannotfillemailformcorrectly@gmail.com"
+</script>
+</body>
+</html>
+
+<!-- Exercise 3 : Employees #3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change User Structure</title>
+</head>
+<body>
+<script>
+const users = [
+  { firstName: 'Bradley', lastName: 'Bouley', role: 'Full Stack Resident' },
+  { firstName: 'Chloe', lastName: 'Alnaji', role: 'Full Stack Resident' },
+  { firstName: 'Jonathan', lastName: 'Baughn', role: 'Enterprise Instructor' },
+  { firstName: 'Michael', lastName: 'Herman', role: 'Lead Instructor' },
+  { firstName: 'Robert', lastName: 'Hajek', role: 'Full Stack Resident' },
+  { firstName: 'Wes', lastName: 'Reid', role: 'Instructor' },
+  { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor' }
+];
+
+// Create an empty object
+const userRoles = {};
+
+// Change the structure of the users array
+users.forEach(user => {
+  const fullName = `${user.firstName} ${user.lastName}`;
+  userRoles[fullName] = user.role;
+});
+
+console.log(userRoles);
+</script>
+</body>
+</html>
+
+
+<!-- Exercise 4 : Array To Object -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Array to Object</title>
+</head>
+<body>
+<script>
+const letters = ['x', 'y', 'z', 'z'];
+
+// Using a for loop
+const letterCount = {};
+for (let i = 0; i < letters.length; i++) {
+  const letter = letters[i];
+  letterCount[letter] = (letterCount[letter] || 0) + 1;
+}
+console.log(letterCount);
+
+// Using the reduce() method
+const letterCountReduce = letters.reduce((acc, letter) => {
+  acc[letter] = (acc[letter] || 0) + 1;
+  return acc;
+}, {});
+console.log(letterCountReduce);
+</script>
+</body>
+</html>
+

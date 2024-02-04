@@ -1,0 +1,155 @@
+// 🌟 Exercise 1: Timer
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        p {
+            background: yellow;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <button id="clear">Clear Interval</button>
+
+    <script>
+        // Part I
+        setTimeout(function() {
+            alert("Hello World");
+        }, 2000);
+
+        // Part II
+        setTimeout(function() {
+            var container = document.getElementById('container');
+            var paragraph = document.createElement('p');
+            paragraph.textContent = 'Hello World';
+            container.appendChild(paragraph);
+        }, 2000);
+
+        // Part III
+        var interval = setInterval(function() {
+            var container = document.getElementById('container');
+            var paragraph = document.createElement('p');
+            paragraph.textContent = 'Hello World';
+            container.appendChild(paragraph);
+
+            if (container.querySelectorAll('p').length >= 5) {
+                clearInterval(interval);
+            }
+        }, 2000);
+
+        // Clear interval button functionality
+        document.getElementById('clear').addEventListener('click', function() {
+            clearInterval(interval);
+        });
+    </script>
+</body>
+</html>
+
+
+// 🌟 Exercise 2 : Move The Box
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <p><button onclick="myMove()">Click Me</button></p>
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+
+    <script>
+        function myMove() {
+            var elem = document.getElementById("animate");
+            var containerWidth = document.getElementById("container").offsetWidth;
+            var pos = 0;
+            var id = setInterval(frame, 1);
+            function frame() {
+                if (pos == containerWidth - elem.offsetWidth) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.left = pos + 'px';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
+   
+// 🌟 Exercise 3: Drag & Drop
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #target {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background: yellow;
+        }
+        #box {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div id="target"></div>
+    <br>
+    <div id="box"></div>
+
+    <script>
+        var draggableElement = document.getElementById("box");
+        var targetElement = document.getElementById("target");
+
+        var offsetX, offsetY;
+
+        draggableElement.addEventListener("mousedown", function(e) {
+            offsetX = e.clientX - draggableElement.getBoundingClientRect().left;
+            offsetY = e.clientY - draggableElement.getBoundingClientRect().top;
+
+            document.addEventListener("mousemove", drag);
+            document.addEventListener("mouseup", drop);
+        });
+
+        function drag(e) {
+            var x = e.clientX - offsetX;
+            var y = e.clientY - offsetY;
+
+            x = Math.min(Math.max(x, 0), targetElement.offsetWidth - draggableElement.offsetWidth);
+            y = Math.min(Math.max(y, 0), targetElement.offsetHeight - draggableElement.offsetHeight);
+
+            draggableElement.style.left = x + "px";
+            draggableElement.style.top = y + "px";
+        }
+
+        function drop() {
+            document.removeEventListener("mousemove", drag);
+            document.removeEventListener("mouseup", drop);
+        }
+    </script>
+</body>
+</html>
+

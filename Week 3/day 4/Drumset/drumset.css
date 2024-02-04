@@ -1,0 +1,25 @@
+/* styles.css */
+
+#drumset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.drum {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.drum:hover {
+    background-color: #555;
+}

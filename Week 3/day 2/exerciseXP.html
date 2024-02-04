@@ -1,0 +1,302 @@
+<!-- Exercise 1  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 1: Change The Article</title>
+<style>
+/* CSS styles for bonus hover effects */
+h1:hover {
+  font-size: random(100)px; /* Bonus: Random font size between 0 and 100px */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.fadeOut {
+  animation: fadeOut 1s ease-in-out forwards; /* Animation effect for fading out */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<article id="article">
+    <h1>Some Facts</h1>
+    <h2 id="chocolate">The Chocolate</h2>
+    <h3>History of the chocolate</h3>
+    <p>Chocolate is made from tropical Theobroma cacao tree seeds. 
+    Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+    <p>After the European discovery of the Americas, chocolate became 
+    very popular in the wider world, and its demand exploded.</p>
+    <p>Chocolate has since become a popular food product that millions enjoy every day, 
+    thanks to its unique, rich, and sweet taste.</p> 
+    <p id="health">But what effect does eating chocolate have on our health?</p> 
+</article>
+
+<button id="boldButton">Make Text Bold</button>
+
+<script>
+// Retrieve the h1 and log it
+const h1Element = document.querySelector('h1');
+console.log(h1Element.textContent);
+
+// Remove the last paragraph in the article
+const article = document.querySelector('#article');
+const paragraphs = article.querySelectorAll('p');
+const lastParagraph = paragraphs[paragraphs.length - 1];
+lastParagraph.remove();
+
+// Change background color of h2 to red when clicked
+const h2Element = document.getElementById('chocolate');
+h2Element.addEventListener('click', function() {
+  h2Element.style.backgroundColor = 'red';
+});
+
+// Hide h3 when clicked
+const h3Element = document.querySelector('h3');
+h3Element.addEventListener('click', function() {
+  h3Element.style.display = 'none';
+});
+
+// Make text of all paragraphs bold when button is clicked
+const boldButton = document.getElementById('boldButton');
+boldButton.addEventListener('click', function() {
+  paragraphs.forEach(paragraph => {
+    paragraph.style.fontWeight = 'bold';
+  });
+});
+
+// Bonus: Hover effect on h1 to set random font size
+h1Element.addEventListener('mouseover', function() {
+  h1Element.style.fontSize = `${Math.floor(Math.random() * 101)}px`;
+});
+
+// Bonus: Hover effect on 2nd paragraph to fade out
+paragraphs[1].addEventListener('mouseover', function() {
+  paragraphs[1].classList.add('fadeOut');
+});
+</script>
+
+</body>
+</html>
+
+<!-- Exercise 2 -->
+<!-- 🌟 Exercise 2 : Work With Forms
+Instructions
+Copy the code below, into a structured HTML file:
+
+<form>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="firstname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lastname"><br><br>
+  <input type="submit" value="Submit" id="submit">
+</form> 
+<ul class="usersAnswer"></ul>
+
+
+Retrieve the form and console.log it.
+
+Retrieve the inputs by their id and console.log them.
+
+Retrieve the inputs by their name attribute and console.log them.
+
+When the user submits the form (ie. submit event listener)
+use event.preventDefault(), why ?
+get the values of the input tags,
+make sure that they are not empty,
+create an li per input value,
+then append them to a the <ul class="usersAnswer"></ul>, below the form.
+The output should be :
+
+<ul class="usersAnswer">
+    <li>first name of the user</li>
+    <li>last name of the user</li>
+</ul> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 2: Work With Forms</title>
+</head>
+<body>
+
+<form id="userForm">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="firstname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lastname"><br><br>
+  <input type="submit" value="Submit" id="submit">
+</form> 
+<ul class="usersAnswer"></ul>
+
+<script>
+// Retrieve the form and console.log it
+const userForm = document.getElementById('userForm');
+console.log(userForm);
+
+// Retrieve the inputs by their id and console.log them
+const firstNameInput = document.getElementById('fname');
+const lastNameInput = document.getElementById('lname');
+console.log(firstNameInput);
+console.log(lastNameInput);
+
+// Retrieve the inputs by their name attribute and console.log them
+const firstNameInputByName = document.querySelector('input[name="firstname"]');
+const lastNameInputByName = document.querySelector('input[name="lastname"]');
+console.log(firstNameInputByName);
+console.log(lastNameInputByName);
+
+// When the user submits the form
+userForm.addEventListener('submit', function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the values of the input tags
+  const firstNameValue = firstNameInput.value.trim();
+  const lastNameValue = lastNameInput.value.trim();
+
+  // Check if the input values are not empty
+  if (firstNameValue !== '' && lastNameValue !== '') {
+    // Create an li per input value
+    const usersAnswerList = document.querySelector('.usersAnswer');
+    const firstNameLi = document.createElement('li');
+    const lastNameLi = document.createElement('li');
+
+    // Assign the input values to the li elements
+    firstNameLi.textContent = firstNameValue;
+    lastNameLi.textContent = lastNameValue;
+
+    // Append the li elements to the ul
+    usersAnswerList.appendChild(firstNameLi);
+    usersAnswerList.appendChild(lastNameLi);
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+<!-- 🌟 Exercise 3 : Transform The Sentence
+Instructions
+Add this sentence to your HTML file then follow the steps :
+
+<p><strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the
+<strong>end</strong> you <strong>will</strong> be great Developers!
+<strong>Enjoy</strong> the <strong>JavaScript </strong> lessons</p>
+
+
+In the JS file:
+
+Declare a global variable named allBoldItems.
+
+Create a function called getBoldItems() that takes no parameter. This function should collect all the bold items inside the paragraph and assign them to the allBoldItems variable.
+
+Create a function called highlight() that changes the color of all the bold text to blue.
+
+Create a function called returnItemsToDefault() that changes the color of all the bold text back to black.
+
+Call the function highlight() on mouseover (ie. when the mouse pointer is moved onto the paragraph), and the function returnItemsToDefault() on mouseout (ie. when the mouse pointer is moved out of the paragraph). Look at this example -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 3: Transform The Sentence</title>
+<style>
+  strong {
+    color: black;
+  }
+</style>
+</head>
+<body>
+
+<p id="sentence"><strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the <strong>end</strong> you <strong>will</strong> be great Developers! <strong>Enjoy</strong> the <strong>JavaScript</strong> lessons</p>
+
+<script>
+// Declare a global variable named allBoldItems
+let allBoldItems;
+
+// Create a function called getBoldItems() that collects all the bold items inside the paragraph
+function getBoldItems() {
+  allBoldItems = document.querySelectorAll('#sentence strong');
+}
+
+// Create a function called highlight() that changes the color of all the bold text to blue
+function highlight() {
+  getBoldItems();
+  allBoldItems.forEach(item => {
+    item.style.color = 'blue';
+  });
+}
+
+// Create a function called returnItemsToDefault() that changes the color of all the bold text back to black
+function returnItemsToDefault() {
+  getBoldItems();
+  allBoldItems.forEach(item => {
+    item.style.color = 'black';
+  });
+}
+
+// Call the function highlight() on mouseover and returnItemsToDefault() on mouseout
+const sentence = document.getElementById('sentence');
+sentence.addEventListener('mouseover', highlight);
+sentence.addEventListener('mouseout', returnItemsToDefault);
+</script>
+
+</body>
+</html>
+
+<!-- Exercice 4 : Volume Of A Sphere -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volume of a Sphere</title>
+<style>
+body {
+    padding-top: 30px;
+}
+
+label, input {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<p>Input radius value and get the volume of a sphere.</p>
+<form id="MyForm">
+    <label for="radius">Radius</label>
+    <input type="text" name="radius" id="radius" required>
+    <label for="volume">Volume</label>
+    <input type="text" name="volume" id="volume" readonly>
+    <input type="submit" value="Calculate" id="submit">
+</form>
+
+<script>
+document.getElementById('MyForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let radius = parseFloat(document.getElementById('radius').value);
+    let volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+    document.getElementById('volume').value = volume.toFixed(2);
+});
+</script>
+
+</body>
+</html>

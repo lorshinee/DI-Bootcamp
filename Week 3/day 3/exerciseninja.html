@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation Exercises</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
+        background-color: #3498db;
+        position: absolute;
+        animation: animate 1.5s ease infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+
+    #loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid #3498db;
+        border-top-color: transparent;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .bubble {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #3498db;
+        position: absolute;
+        animation: bubble 3s ease-in-out infinite;
+    }
+
+    @keyframes bubble {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(-100px) scale(1.2);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translateY(-200px) scale(1.4);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Exercise 1: Box Animation -->
+    <div class="box" style="left: 50px; top: 50px;"></div>
+    <div class="box" style="left: 150px; top: 50px;"></div>
+    <div class="box" style="left: 250px; top: 50px;"></div>
+
+    <!-- Exercise 2: Loading -->
+    <div id="loading"></div>
+
+    <!-- Exercise 3: Bubble Animation -->
+    <div class="bubble" style="left: 100px;"></div>
+    <div class="bubble" style="left: 200px;"></div>
+    <div class="bubble" style="left: 300px;"></div>
+</body>
+</html>

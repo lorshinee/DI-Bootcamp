@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation Exercises</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
+        background-color: #3498db;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        position: absolute;
+        cursor: move;
+    }
+
+    #paragraph {
+        font-size: 16px;
+        position: absolute;
+        cursor: move;
+    }
+</style>
+</head>
+<body>
+    <div id="container"></div>
+    <p id="paragraph">Drag me!</p>
+
+    <script>
+        // Exercise 1: Animation With The Alphabet
+        const container = document.getElementById('container');
+
+        for (let i = 0; i < 26; i++) {
+            const letter = String.fromCharCode(65 + i);
+            const box = document.createElement('div');
+            box.textContent = letter;
+            box.className = 'box';
+            box.style.left = (i * 60) + 'px';
+            box.setAttribute('draggable', true);
+
+            box.addEventListener('dragstart', function (event) {
+                event.dataTransfer.setData('text/plain', event.target.textContent);
+            });
+
+            container.appendChild(box);
+        }
+
+        // Exercise 2: Animation With A Paragraph
+        const paragraph = document.getElementById('paragraph');
+
+        paragraph.addEventListener('dragstart', function (event) {
+            event.dataTransfer.setData('text/plain', 'paragraph');
+        });
+
+        container.addEventListener('dragover', function (event) {
+            event.preventDefault();
+        });
+
+        container.addEventListener('drop', function (event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('text/plain');
+
+            if (data === 'paragraph') {
+                paragraph.style.left = event.clientX + 'px';
+                paragraph.style.top = event.clientY + 'px';
+            } else {
+                const newBox = document.createElement('div');
+                newBox.className = 'box';
+                newBox.textContent = data;
+                newBox.style.left = event.clientX + 'px';
+                newBox.style.top = event.clientY + 'px';
+                container.appendChild(newBox);
+            }
+        });
+
+        container.addEventListener('mousemove', function (event) {
+            const fontSize = Math.max(event.clientX, event.clientY) / 10;
+            paragraph.style.fontSize = fontSize + 'px';
+        });
+    </script>
+</body>
+</html>

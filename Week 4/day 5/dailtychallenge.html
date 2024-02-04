@@ -1,0 +1,60 @@
+<!-- Instructions
+Create a function that:
+
+takes in two strings as two parameters
+and returns a boolean that indicates whether or not the first string is an anagram of the second string.
+Some Help
+
+What is an anagram?
+An anagram is another word or phrase formed by rearranging letters of the first word or phrase.
+
+
+Example of anagrams
+
+"Astronomer" is an anagram of "Moon starer"
+"School master" is an anagram of "The classroom"
+"The Morse Code" is an anagram of "Here come dots"
+
+
+Do we need to consider whitespace?
+Trim whitespace prior to comparison. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anagram Checker</title>
+</head>
+<body>
+  <h1>Anagram Checker</h1>
+  <label for="input1">Enter first string:</label>
+  <input type="text" id="input1"><br><br>
+  <label for="input2">Enter second string:</label>
+  <input type="text" id="input2"><br><br>
+  <button onclick="checkAnagram()">Check Anagram</button>
+  <p id="result"></p>
+
+  <script>
+    function isAnagram(str1, str2) {
+      const sortedStr1 = str1.trim().toLowerCase().split('').sort().join('');
+      const sortedStr2 = str2.trim().toLowerCase().split('').sort().join('');
+      return sortedStr1 === sortedStr2;
+    }
+
+    function checkAnagram() {
+      const input1 = document.getElementById('input1').value;
+      const input2 = document.getElementById('input2').value;
+      const result = document.getElementById('result');
+
+      if (isAnagram(input1, input2)) {
+        result.textContent = `"${input1}" and "${input2}" are anagrams of each other.`;
+      } else {
+        result.textContent = `"${input1}" and "${input2}" are not anagrams of each other.`;
+      }
+    }
+  </script>
+</body>
+</html>

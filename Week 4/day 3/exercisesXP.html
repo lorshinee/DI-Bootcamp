@@ -1,0 +1,161 @@
+<!-- // Exercise 1 : Analyzing
+// Instructions
+// Analyze these pieces of code before executing them. What will be the outputs ?
+// ------1------
+// const fruits = ["apple", "orange"];
+// const vegetables = ["carrot", "potato"];
+
+// const result = ['bread', ...vegetables, 'chicken', ...fruits];
+// console.log(result);
+
+// ------2------
+// const country = "USA";
+// console.log([...country]);
+
+// ------Bonus------
+// let newArray = [...[,,]];
+// console.log(newArray);
+
+
+const fruits = ["apple", "orange"];
+const vegetables = ["carrot", "potato"];
+
+const result = ['bread', ...vegetables, 'chicken', ...fruits];
+console.log(result);
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Analysis</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+  <h2>Code Analysis</h2>
+  <script>
+    // Code for Exercise 1
+    const fruits = ["apple", "orange"];
+    const vegetables = ["carrot", "potato"];
+
+    const result = ['bread', ...vegetables, 'chicken', ...fruits];
+    console.log(result);
+
+    // Code for Exercise 2
+    const country = "USA";
+    console.log([...country]);
+
+    // Bonus Code
+    let newArray = [...[,,]];
+    console.log(newArray);
+  </script>
+</body>
+</html>
+
+
+<!-- 🌟 Exercise 2 : Employees -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Students</title>
+</head>
+<body>
+  <h1>Welcome Students</h1>
+
+  <script>
+    const users = [
+      { firstName: 'Bradley', lastName: 'Bouley', role: 'Full Stack Resident' },
+      { firstName: 'Chloe', lastName: 'Alnaji', role: 'Full Stack Resident' },
+      { firstName: 'Jonathan', lastName: 'Baughn', role: 'Enterprise Instructor' },
+      { firstName: 'Michael', lastName: 'Herman', role: 'Lead Instructor' },
+      { firstName: 'Robert', lastName: 'Hajek', role: 'Full Stack Resident' },
+      { firstName: 'Wes', lastName: 'Reid', role: 'Instructor' },
+      { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor' }
+    ];
+
+    // 1. Using the map() method
+    const welcomeStudents = users.map(user => `Hello ${user.firstName}`);
+    console.log(welcomeStudents);
+
+    // 2. Using the filter() method
+    const fullStackResidents = users.filter(user => user.role === 'Full Stack Resident');
+    console.log(fullStackResidents);
+
+    // 3. Bonus: Chain the filter() method with map() method
+    const lastNamesOfFullStackResidents = users
+      .filter(user => user.role === 'Full Stack Resident')
+      .map(user => user.lastName);
+    console.log(lastNamesOfFullStackResidents);
+  </script>
+</body>
+</html>
+
+
+<!-- 🌟 Exercise 3 : Star Wars -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Wars</title>
+</head>
+<body>
+  <h1>Star Wars</h1>
+
+  <script>
+    const epic = ['a', 'long', 'time', 'ago', 'in a', 'galaxy', 'far far', 'away'];
+
+    // Using the reduce() method to combine all elements into a single string
+    const combinedString = epic.reduce((accumulator, currentValue) => accumulator + ' ' + currentValue);
+    console.log(combinedString);
+  </script>
+</body>
+</html>
+
+
+<!-- 🌟 Exercise 4 : Employees #2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students who Passed</title>
+</head>
+<body>
+  <h1>Students who Passed</h1>
+
+  <script>
+    const students = [
+      {name: "Ray", course: "Computer Science", isPassed: true},
+      {name: "Liam", course: "Computer Science", isPassed: false},
+      {name: "Jenner", course: "Information Technology", isPassed: true},
+      {name: "Marco", course: "Robotics", isPassed: true},
+      {name: "Kimberly", course: "Artificial Intelligence", isPassed: false},
+      {name: "Jamie", course: "Big Data", isPassed: false}
+    ];
+
+    // Using the filter() method to create a new array of students who passed the course
+    const passedStudents = students.filter(student => student.isPassed);
+
+    // Using forEach() to congratulate passed students
+    passedStudents.forEach(student => {
+      console.log(`Good job ${student.name}, you passed the course in ${student.course}.`);
+    });
+  </script>
+</body>
+</html>
+
